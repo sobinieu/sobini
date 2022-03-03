@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core service &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Public API" href="business.html" />
+    <link rel="prev" title="Web apps" href="apps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Core service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#entries-or-ledger-record">Entries or ledger record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-entry-flow">Transaction entry flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entry-types">Entry types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#immutability">Immutability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Notification API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Setting environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">Sensitive and personal data storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Core service</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="core-service">
+<h1>Core service<a class="headerlink" href="#core-service" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Core service is a simple transaction ledger which provides basic functions for payment processing.</p></li>
+<li><p>The service communicates only with Public API service and 3d party connectors.</p></li>
+<li><p>Service should be deployed in DMZ network zone and protected with encryption and Service-to-Service authentication mechanism</p></li>
+<li><p>Money stored in cents (atomic currency unit)</p></li>
+</ul>
+<div class="section" id="entries-or-ledger-record">
+<h2>Entries or ledger record<a class="headerlink" href="#entries-or-ledger-record" title="Permalink to this headline"></a></h2>
+<p>Ledger structure:</p>
+<ul class="simple">
+<li><p>Operations, represents sufficient customer’s operation on the wallet.</p></li>
+<li><p>Wallet requests (any request to the service, contains information about initial request: type, amount, currency, etc)</p></li>
+<li><p>Entries, an atomic ledger record consists of debit and credit source, type, amount, currency, input/output balance</p></li>
+<li><p>Entries are formed accordingly to the wallet request type an account settings (commission, operation type)</p></li>
+<li><p>Each entry is linked to: the operation, wallet request, wallet itself</p></li>
+</ul>
+</div>
+<div class="section" id="transaction-entry-flow">
+<h2>Transaction entry flow<a class="headerlink" href="#transaction-entry-flow" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Classy payment on merchant web-site</p></li>
+</ol>
+<ul class="simple">
+<li><p>Operation 1 of type ‘charge’ is created (invoicing a client)</p></li>
+<li><p>No entry record created</p></li>
+<li><p>Operation 2 of type ‘pay’ is created (paying the invoice) and linked to Operation 1</p></li>
+<li><p>Entry 1 of ‘hold’ type is created on customer’s wallet (funds moved from actual customer’s balance to the system designated for holdings wallet)</p></li>
+<li><p>Entry 2 created with type ‘commission’ (commission amount is moved from merchant’s wallet to the system designated wallet)</p></li>
+<li><p>Request to 3d party gateways is sent and logged</p></li>
+<li><p>Entry 3 with type ‘pay’ (funds are moved from system hold wallet to a merchant’s wallet)</p></li>
+<li><p>Operation status updated</p></li>
+<li><p>Result posted back to Public API which is sending notification to the merchant</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Money transfer (p2p)</p></li>
+<li><p>Payouts/Settlements</p></li>
+</ol>
+</div>
+<div class="section" id="entry-types">
+<h2>Entry types<a class="headerlink" href="#entry-types" title="Permalink to this headline"></a></h2>
+<p>Entries could be of the following types:</p>
+<ul class="simple">
+<li><p>hold</p></li>
+<li><p>transfer</p></li>
+<li><p>pay</p></li>
+<li><p>commission</p></li>
+<li><p>payout</p></li>
+</ul>
+<p>Entry direction is defined by Debit (deduct funds) to Credit (fund the account) cash flow concept.</p>
+</div>
+<div class="section" id="immutability">
+<h2>Immutability<a class="headerlink" href="#immutability" title="Permalink to this headline"></a></h2>
+<p>Entries are not a subject of any modifications, and meant to be persistent and immutable data.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="apps.html" class="btn btn-neutral float-left" title="Web apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="business.html" class="btn btn-neutral float-right" title="Public API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

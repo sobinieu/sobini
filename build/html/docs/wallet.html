@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer digital wallets and bank accounts &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PCI DSS brief info" href="pci_dss.html" />
+    <link rel="prev" title="Continuation and backup" href="continuation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customer digital wallets and bank accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sign-up-customer-on-boarding">Sign-up (Customer on-boarding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sing-up-business-on-boarding">Sing-up (Business on-boarding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sing-in-2fa">Sing-in (2FA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customer-due-dilligence-kyc">Customer due dilligence (KYC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-bank-account">Opening bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-digital-asset-account">Opening digital asset account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customer-profile">Customer profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-money-to-the-account-top-up">Transferring money to the account (Top-Up)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-digital-asset-to-the-account">Transferring digital asset to the account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#withdrawing-funds-from-the-account-withdrawal">Withdrawing funds from the account (Withdrawal)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#withdrawing-digital-asset-to-the-account">Withdrawing digital asset to the account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#internal-transfers">Internal transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#digital-assets-exchange-operations">Digital assets exchange operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#manually-creating-a-business-account">Manually creating a business account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bank-and-digital-account-management">Bank and digital account management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kyc-management-workflow-and-approval">KYC management workflow and approval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-customers-profiles">Managing customer’s profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-money-transfers">Manual money transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-commission-and-fee">Setting commission and fee</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-and-bi-system-account-balances-entries-turn-over-etc">Reporting and BI system (Account balances, Entries, Turn-over, etc)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Customer digital wallets and bank accounts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/wallet.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="customer-digital-wallets-and-bank-accounts">
+<h1>Customer digital wallets and bank accounts<a class="headerlink" href="#customer-digital-wallets-and-bank-accounts" title="Permalink to this headline"></a></h1>
+<div class="section" id="sign-up-customer-on-boarding">
+<h2>Sign-up (Customer on-boarding)<a class="headerlink" href="#sign-up-customer-on-boarding" title="Permalink to this headline"></a></h2>
+<p>Personal accounts are registered on the login page.
+A new customer can go through the registration process independently, in two places.</p>
+<p>On the bank product authorisation page:</p>
+<img alt="../_images/bank_reg.PNG" src="../_images/bank_reg.PNG" />
+<p>On the authorisation page of the Digital assets app:</p>
+<img alt="../_images/crypto_reg.jpg" src="../_images/crypto_reg.jpg" />
+<p>In order to pass, it is necessary to specify
+the parameters email, phone, first name, last name, password and select the country.</p>
+</div>
+<div class="section" id="sing-up-business-on-boarding">
+<h2>Sing-up (Business on-boarding)<a class="headerlink" href="#sing-up-business-on-boarding" title="Permalink to this headline"></a></h2>
+<p>Business accounts can be registered on the authorisation page of the Digital assets application,
+or manually in the manage application core.</p>
+<img alt="../_images/crypto_business.jpg" src="../_images/crypto_business.jpg" />
+<p>In order to pass, you need to select the business account type, as well as specify
+the values email, phone, company name, registration number, first name,
+last name, password and select country.</p>
+</div>
+<div class="section" id="sing-in-2fa">
+<h2>Sing-in (2FA)<a class="headerlink" href="#sing-in-2fa" title="Permalink to this headline"></a></h2>
+<p>The authorisation process is done either from the banking app or through crypto-application.</p>
+<img alt="../_images/bank_auth.PNG" src="../_images/bank_auth.PNG" />
+<img alt="../_images/crypto_auth.PNG" src="../_images/crypto_auth.PNG" />
+<p>After entering your personal details, you will be prompted to enter the code from the text message sent to the number you provided during registration.</p>
+</div>
+<div class="section" id="customer-due-dilligence-kyc">
+<h2>Customer due dilligence (KYC)<a class="headerlink" href="#customer-due-dilligence-kyc" title="Permalink to this headline"></a></h2>
+<p>After registration and authorisation, you will be required to go through an identification process.
+The Sumsub service is used for verification and will require passport details as well as photos of the client.</p>
+<img alt="../_images/bank_kyc.jpg" src="../_images/bank_kyc.jpg" />
+<img alt="../_images/crypto_kyc.jpg" src="../_images/crypto_kyc.jpg" />
+</div>
+<div class="section" id="opening-bank-account">
+<h2>Opening bank account<a class="headerlink" href="#opening-bank-account" title="Permalink to this headline"></a></h2>
+<p>The request to create a bank account button can be found on the page with the list of current accounts.</p>
+<img alt="../_images/bank_dashboard.PNG" src="../_images/bank_dashboard.PNG" />
+<img alt="../_images/bank_account.PNG" src="../_images/bank_account.PNG" />
+<p>The currency of the account must be specified in order to register the application. After submitting the application,
+it must be confirmed on the manager page.</p>
+</div>
+<div class="section" id="opening-digital-asset-account">
+<h2>Opening digital asset account<a class="headerlink" href="#opening-digital-asset-account" title="Permalink to this headline"></a></h2>
+<p>After completing the account registration, a BTC and ETH wallet number will be automatically created and assigned.</p>
+</div>
+<div class="section" id="customer-profile">
+<h2>Customer profile<a class="headerlink" href="#customer-profile" title="Permalink to this headline"></a></h2>
+<p>Crypto accounts balance, change password, enable 2FA functionality can be viewed/changed on the dashboard page.</p>
+<img alt="../_images/crypto_dashboard.PNG" src="../_images/crypto_dashboard.PNG" />
+<p>Edition the banking profile in the Settings tab.</p>
+<img alt="../_images/bank_settings.PNG" src="../_images/bank_settings.PNG" />
+</div>
+<div class="section" id="transferring-money-to-the-account-top-up">
+<h2>Transferring money to the account (Top-Up)<a class="headerlink" href="#transferring-money-to-the-account-top-up" title="Permalink to this headline"></a></h2>
+<p>Bank accounts are deposited manually on the managers page, only with an incoming payment,
+to the specified details on the “Receiving Money” page.</p>
+<img alt="../_images/bank_topup.PNG" src="../_images/bank_topup.PNG" />
+</div>
+<div class="section" id="transferring-digital-asset-to-the-account">
+<h2>Transferring digital asset to the account<a class="headerlink" href="#transferring-digital-asset-to-the-account" title="Permalink to this headline"></a></h2>
+<p>Deposit your cryptocurrency wallet on the Deposit page. After entering the required amount, a unique
+QR code for deposit. Also, under the QR code you will find your personal BTC/ETH wallet number.</p>
+<img alt="../_images/crypto_topup2.PNG" src="../_images/crypto_topup2.PNG" />
+</div>
+<div class="section" id="withdrawing-funds-from-the-account-withdrawal">
+<h2>Withdrawing funds from the account (Withdrawal)<a class="headerlink" href="#withdrawing-funds-from-the-account-withdrawal" title="Permalink to this headline"></a></h2>
+<p>The withdrawal request is made on the transfers page. To create a request, a beneficiary profile must be created.</p>
+<img alt="../_images/bank_beneficiary.PNG" src="../_images/bank_beneficiary.PNG" />
+<p>After creating a beneficiary, create an application, specifying the outgoing account, details, amount,
+description and attach a document if necessary.</p>
+<img alt="../_images/bank_transfer.PNG" src="../_images/bank_transfer.PNG" />
+</div>
+<div class="section" id="withdrawing-digital-asset-to-the-account">
+<h2>Withdrawing digital asset to the account<a class="headerlink" href="#withdrawing-digital-asset-to-the-account" title="Permalink to this headline"></a></h2>
+<p>Cryptocurrency withdrawals are also made through applications on the Withdrawal page. Need to specify the amount,
+Choose (to start with) an incoming wallet, then you will be asked to pass KYC verification (only a face scan),
+After that the application will go to the manager for consideration.</p>
+<img alt="../_images/crypto_withdraw.PNG" src="../_images/crypto_withdraw.PNG" />
+</div>
+<div class="section" id="internal-transfers">
+<h2>Internal transfers<a class="headerlink" href="#internal-transfers" title="Permalink to this headline"></a></h2>
+<p>Internal transfers are made from the Qiuntex trasfers page. It is necessary to specify the outgoing
+and incoming account numbers, the amount and description of the payment. Transfers are made automatically.</p>
+<img alt="../_images/bank_intransfer.PNG" src="../_images/bank_intransfer.PNG" />
+</div>
+<div class="section" id="digital-assets-exchange-operations">
+<h2>Digital assets exchange operations<a class="headerlink" href="#digital-assets-exchange-operations" title="Permalink to this headline"></a></h2>
+<p>The exchange on the crypto-application side only exchanges fiat into cryptocurrency or vice versa.
+The page displays the current and up-to-date rate (based on Kraken rate),
+the amount of transfer fee, as well as the final amount:</p>
+<img alt="../_images/crypto_exchange.PNG" src="../_images/crypto_exchange.PNG" />
+</div>
+</div>
+<div class="section" id="managing-customer-digital-wallets-and-bank-accounts">
+<h1>Managing customer digital wallets and bank accounts<a class="headerlink" href="#managing-customer-digital-wallets-and-bank-accounts" title="Permalink to this headline"></a></h1>
+<div class="section" id="manually-creating-a-business-account">
+<h2>Manually creating a business account<a class="headerlink" href="#manually-creating-a-business-account" title="Permalink to this headline"></a></h2>
+<p>For manual creation of profiles, as well as business profiles (accounts),
+you need to use the internal core/manage application.
+The Profiles page displays all the current accounts,
+as well as the functionality to create Business users (normal account type) or Business Accounts</p>
+<img alt="../_images/core_business.PNG" src="../_images/core_business.PNG" />
+</div>
+<div class="section" id="bank-and-digital-account-management">
+<h2>Bank and digital account management<a class="headerlink" href="#bank-and-digital-account-management" title="Permalink to this headline"></a></h2>
+<p>A list of incoming account creation requests, or manual creation functionality, is displayed on the Account Requests page.</p>
+<img alt="../_images/core_account.PNG" src="../_images/core_account.PNG" />
+</div>
+<div class="section" id="kyc-management-workflow-and-approval">
+<h2>KYC management workflow and approval<a class="headerlink" href="#kyc-management-workflow-and-approval" title="Permalink to this headline"></a></h2>
+<p>Depending on the type of integration with Sumsub, the KYC verification page,
+there is an option to approve or reject the application manually.</p>
+<img alt="../_images/core_kyc.PNG" src="../_images/core_kyc.PNG" />
+</div>
+<div class="section" id="managing-customers-profiles">
+<h2>Managing customer’s profiles<a class="headerlink" href="#managing-customers-profiles" title="Permalink to this headline"></a></h2>
+<p>The Profiles page displays a complete list of accounts. Each account can be “locked”,
+by calling the KYC functionality, it also allows you to update client information.
+Manual creation of users and business users can also be found on the Profiles page.</p>
+<img alt="../_images/core_profiles.PNG" src="../_images/core_profiles.PNG" />
+</div>
+<div class="section" id="manual-money-transfers">
+<h2>Manual money transfers<a class="headerlink" href="#manual-money-transfers" title="Permalink to this headline"></a></h2>
+<p>Manual deposit (or withdrawal) is on Payment Requests page.
+For deposit/withdrawal you should specify profile id, payer’s name, amount, currency and description.</p>
+<img alt="../_images/core_cashin.PNG" src="../_images/core_cashin.PNG" />
+<img alt="../_images/core_cashout.PNG" src="../_images/core_cashout.PNG" />
+</div>
+<div class="section" id="setting-commission-and-fee">
+<h2>Setting commission and fee<a class="headerlink" href="#setting-commission-and-fee" title="Permalink to this headline"></a></h2>
+<p>The flexy-commission service is used to regulate the commission on transactions. The service is based on rules,
+written in JSON syntax. Commissions can be set as a general or for each profile separately.
+Example of a rule for withdrawal with 10% commission + 10</p>
+<img alt="../_images/commissions.jpg" src="../_images/commissions.jpg" />
+</div>
+<div class="section" id="reporting-and-bi-system-account-balances-entries-turn-over-etc">
+<h2>Reporting and BI system (Account balances, Entries, Turn-over, etc)<a class="headerlink" href="#reporting-and-bi-system-account-balances-entries-turn-over-etc" title="Permalink to this headline"></a></h2>
+<p>To view complete information about all system data, such as list of profiles, balances, transactions, commissions
+external open-source system metabase is used.
+The system allows you to view the data of the database tables in a convenient format.
+It also allows to create own reports, upload data and notify by e-mail.</p>
+<p>Core tables list:</p>
+<img alt="../_images/metabase.jpg" src="../_images/metabase.jpg" />
+<p>Core wallets list (balances of client’s wallets):</p>
+<img alt="../_images/core_wallets.jpg" src="../_images/core_wallets.jpg" />
+<p>Core feed (transaction details):</p>
+<img alt="../_images/core_feed.jpg" src="../_images/core_feed.jpg" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="continuation.html" class="btn btn-neutral float-left" title="Continuation and backup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pci_dss.html" class="btn btn-neutral float-right" title="PCI DSS brief info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

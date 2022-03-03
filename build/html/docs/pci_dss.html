@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCI DSS brief info &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="authors.html" />
+    <link rel="prev" title="Customer digital wallets and bank accounts" href="wallet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PCI DSS brief info</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-system-components">List of system components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensitive-data-flow-description">Sensitive data flow description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensitive-data-objects">Sensitive data objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-sensitive-data-components">Processing sensitive data components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infrastructure-specification">Infrastructure specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-map-of-network-relations-in-our-infrastructure">The map of network relations in our infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-description-of-deployment-new-environment-of-sobini-product">The description of deployment new environment of Sobini product</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>PCI DSS brief info</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/pci_dss.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pci-dss-brief-info">
+<h1>PCI DSS brief info<a class="headerlink" href="#pci-dss-brief-info" title="Permalink to this headline"></a></h1>
+<p>Basic system information compiled for PCI DSS, audit use only</p>
+<div class="section" id="list-of-system-components">
+<h2>List of system components<a class="headerlink" href="#list-of-system-components" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 53%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>business</p></td>
+<td><p>Public payment API and checkout form,
+receives incoming callbacks and
+sends payment requests to providers</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-odd"><td><p>core</p></td>
+<td><p>Financial ledger for the operations,
+uses the logic of calculating commissions
+and stores the wallet balances</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-even"><td><p>business-sidekiq</p></td>
+<td><p>Sidekiq job schedule for business web-service
+controls the change of transaction status</p></td>
+<td><p>RoR application</p></td>
+</tr>
+<tr class="row-odd"><td><p>business_whenever</p></td>
+<td><p>Service for business_sidekiq queues</p></td>
+<td><p>RoR application</p></td>
+</tr>
+<tr class="row-even"><td><p>core-whenever</p></td>
+<td><p>Service for core_sidekiq queues</p></td>
+<td><p>RoR application</p></td>
+</tr>
+<tr class="row-odd"><td><p>core-docs</p></td>
+<td><p>Public Core API documentation (rst based)</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-even"><td><p>flexy-commission</p></td>
+<td><p>Commission calculation application</p></td>
+<td><p>Python app</p></td>
+</tr>
+<tr class="row-odd"><td><p>flexy-comm-admin</p></td>
+<td><p>Interface to regulate commission rules</p></td>
+<td><p>Python web-app</p></td>
+</tr>
+<tr class="row-even"><td><p>flexy-guard</p></td>
+<td><p>Payment filtering web-service</p></td>
+<td><p>Python app</p></td>
+</tr>
+<tr class="row-odd"><td><p>flexy-guard-admin</p></td>
+<td><p>Web interface and admin panel for flexy-guard</p></td>
+<td><p>Python web-app</p></td>
+</tr>
+<tr class="row-even"><td><p>demo</p></td>
+<td><p>Just few static pages for checkout demo</p></td>
+<td><p>Python web-app</p></td>
+</tr>
+<tr class="row-odd"><td><p>tests</p></td>
+<td><p>Integration tests for all components</p></td>
+<td><p>Python/Selenium web-app</p></td>
+</tr>
+<tr class="row-even"><td><p>metabase</p></td>
+<td><p>Data analysis web application (reports)</p></td>
+<td><p>Java web-application</p></td>
+</tr>
+<tr class="row-odd"><td><p>wallet-web</p></td>
+<td><p>Wallet web application</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-even"><td><p>banking-web</p></td>
+<td><p>Online banking web application</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-odd"><td><p>settings</p></td>
+<td><p>Applications for adjusting the settings
+of different providers</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-even"><td><p>core-sidekiq</p></td>
+<td><p>Sidekiq job schedule for core web-service</p></td>
+<td><p>RoR application</p></td>
+</tr>
+<tr class="row-odd"><td><p>business-docs</p></td>
+<td><p>Public API documentation (rst based)</p></td>
+<td><p>RoR web-application</p></td>
+</tr>
+<tr class="row-even"><td><p>minio</p></td>
+<td><p>Static content local storage</p></td>
+<td><p>Java web-application</p></td>
+</tr>
+<tr class="row-odd"><td><p>rate</p></td>
+<td><p>Currency rate provider and cache</p></td>
+<td><p>Python web-app</p></td>
+</tr>
+<tr class="row-even"><td><p>rate-admin</p></td>
+<td><p>Web interface and admin panel for rate</p></td>
+<td><p>Python web-app</p></td>
+</tr>
+<tr class="row-odd"><td><p>card-storage</p></td>
+<td><p>Encrypted persistent card-storage (not used)</p></td>
+<td><p>RoR app</p></td>
+</tr>
+<tr class="row-even"><td><p>mongo-express</p></td>
+<td><p>Web interface to manage MongoDB</p></td>
+<td><p>NodeJS app</p></td>
+</tr>
+<tr class="row-odd"><td><p>mongo</p></td>
+<td><p>Mongo database for storing stats and rates
+commission rules and counts various counters</p></td>
+<td><p>Mongo</p></td>
+</tr>
+<tr class="row-even"><td><p>postgres</p></td>
+<td><p>PostgresDB - main data storage for
+core/business/settings apps</p></td>
+<td><p>Postgres</p></td>
+</tr>
+<tr class="row-odd"><td><p>redis</p></td>
+<td><p>In-memory data storage, using as fast cache</p></td>
+<td><p>Redis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sensitive-data-flow-description">
+<h2>Sensitive data flow description<a class="headerlink" href="#sensitive-data-flow-description" title="Permalink to this headline"></a></h2>
+<img alt="../_images/sensitive_data_flowchart.png" src="../_images/sensitive_data_flowchart.png" />
+</div>
+<div class="section" id="sensitive-data-objects">
+<h2>Sensitive data objects<a class="headerlink" href="#sensitive-data-objects" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>PAN (Card number)</p></li>
+<li><p>CVC/CVV code</p></li>
+</ul>
+</div>
+<div class="section" id="processing-sensitive-data-components">
+<h2>Processing sensitive data components<a class="headerlink" href="#processing-sensitive-data-components" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Web page (accepting sensitive data object from the web-form and sending it over HTTPS POST to business web-service)</p></li>
+<li><p>Public API (accepting sensitive data object from the JSON API request over HTTPS POST and sending it to business web-service)</p></li>
+<li><p>Business web service accepts sensitive data and stores it in in-memory tokenized hash-table</p></li>
+<li><p>Generates (business web-service) token using card masked (sanitized) number (6x4)</p></li>
+<li><p>Posting (business web-service) it as hash {token: [sensitive data]} to in-memory hash table</p></li>
+<li><p>Interacts (business web-service) using this token with the following system components: flexy-guard service, internally within business web-service</p></li>
+<li><p>Retrieves (business web-service) using this token sensitive data from in-memory hash table and sends to the 3d party bank acquirer or payment service provider’s API</p></li>
+<li><p>Logs sanitized sensitive data (6x4 masked card number) to InteractionLogs table in business web-service data-base</p></li>
+</ul>
+</div>
+<div class="section" id="infrastructure-specification">
+<h2>Infrastructure specification<a class="headerlink" href="#infrastructure-specification" title="Permalink to this headline"></a></h2>
+<p>For our application infrastructure we need the deployment of servers with provided specification(default recommended configuration)</p>
+<p>For the base default PCI DSS deployment we need 5 servers in infrastructure</p>
+<ol class="arabic simple">
+<li><p>Bastion server - VPN gateway server for accessing our infrastructure</p></li>
+</ol>
+<ul class="simple">
+<li><p>2 CPU, 2 Gb RAM, 20 Gb SSD</p></li>
+<li><p>Soft: OpenVPN</p></li>
+<li><p>OS: Ubuntu 20</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Log server - collector of all logs from all servers and all services</p></li>
+</ol>
+<ul class="simple">
+<li><p>4+ CPU, 16+ Gb RAM, 500 Gb SSD</p></li>
+<li><p>Soft: ELK, Wazuh</p></li>
+<li><p>OS: Ubuntu 20</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Tower(Gitlab) server - server with Gitlab server and tools for deployment. Also gitlab-runner for building we registering on this server</p></li>
+</ol>
+<ul class="simple">
+<li><p>4+ CPU, 8+ Gb RAM, 200 Gb SSD</p></li>
+<li><p>Soft: Docker, docker-compose, Ansible</p></li>
+<li><p>OS: Ubuntu 20</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Main application server - server with Docker for starting application</p></li>
+</ol>
+<ul class="simple">
+<li><p>4+ CPU, 16+ RAM, 100 Gb SSD</p></li>
+<li><p>Soft: Docker, docker-compose</p></li>
+<li><p>OS: Ubuntu 18.04</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Database server (PostgreSQL 10+)</p></li>
+</ol>
+<ul class="simple">
+<li><p>2+ CPU, 4+ Gb RAM, 50 Gb SSD</p></li>
+<li><p>Soft: PostgreSQL Server 11</p></li>
+<li><p>OS: Ubuntu 20</p></li>
+</ul>
+</div>
+<div class="section" id="the-map-of-network-relations-in-our-infrastructure">
+<h2>The map of network relations in our infrastructure<a class="headerlink" href="#the-map-of-network-relations-in-our-infrastructure" title="Permalink to this headline"></a></h2>
+<img alt="../_images/pci_map.png" src="../_images/pci_map.png" />
+</div>
+<div class="section" id="the-description-of-deployment-new-environment-of-sobini-product">
+<h2>The description of deployment new environment of Sobini product<a class="headerlink" href="#the-description-of-deployment-new-environment-of-sobini-product" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Creating a Group and project repository in this group for new customer in the newly created and configured Gitlab server.</p></li>
+<li><p>Creating a user deployer in Gitlab server and setting password for this user and adding SSH key.</p></li>
+<li><p>Importing our software code to the created repository.</p></li>
+</ol>
+<img alt="../_images/pci_git.png" src="../_images/pci_git.png" />
+<ol class="arabic simple" start="4">
+<li><p>Making all requiring changes to the repository (all the variables in CI-CD branch) in folder cicd/inventories/products/PROJECTNAME/production/group_vars/ files all.yml and vault.yml</p></li>
+<li><p>On the main application server we deploy Nginx and configure it with our Ansible playbook with a predefined domain name for our application. Adding to the NGINX generated SSL certificates and then all the upstreams and virtual hosts will be ready to use. Can be used as a wildcard SSL certificate or individual for each service (wallet.DOMAIN.TLD, core.DOMAIN.TLD, business.DOMAIN.TLD etc.)</p></li>
+<li><p>Registering the 2 Gitlab-runners: one Gitlab runner for building images from source(better to deploy on separate VM) and other one for deploying the product (in most cases on server where Docker containers will be started)</p></li>
+<li><p>In existing project in file .gitlab-ci.yml checking and replacing the tags for stages (replace the default tags with ‘sobini’ word to something with ‘NEWPROJECTNAME’)</p></li>
+<li><p>In Project settings in section CI/CD we adding all needed variables for build and deploy: REGISTRY_URL, REGISTRY_USER,  REGISTRY_PASSWORD, PROD_VAULT and PROJECT_NAME.</p></li>
+<li><p>In develop or master branch (depends on customer choice of main branch in repository) we creating tag like vX.X.X where X.X.X is a version of our release for production - for example v0.0.1. After that you will see the started new pipeline in section CI/CD. In pipeline you will see the stages for building and deploying application.</p></li>
+</ol>
+<img alt="../_images/pci_deploy.png" src="../_images/pci_deploy.png" />
+<ol class="arabic simple" start="10">
+<li><p>The automatic (Auto-…) stages are starting automatically when tagging commit or branch with tag ’vX.X.X’ (X.X.X is version number as mentioned above).  The deploy stage is not starting automatically and should be triggered manually by pressing button Deploy to production/Deploy to dev</p></li>
+<li><p>After deploying the software the new images will be applied on Application server and docker-compose will bring up the services with db migrations if its required.</p></li>
+<li><p>After that all the services will be available with main domain virtual host that were configured before.</p></li>
+</ol>
+<img alt="../_images/pci_wallet2.PNG" src="../_images/pci_wallet2.PNG" />
+<img alt="../_images/pci_demo.png" src="../_images/pci_demo.png" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wallet.html" class="btn btn-neutral float-left" title="Customer digital wallets and bank accounts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authors.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

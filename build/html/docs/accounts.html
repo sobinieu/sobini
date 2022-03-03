@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client account and profile &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fraud detection and prevention" href="fraud.html" />
+    <link rel="prev" title="Public API" href="business.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client account and profile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-principles">Basic principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client-due-diligence">Client due diligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#account-types">Account types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Notification API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Setting environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pds.html">Sensitive and personal data storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Client account and profile</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/accounts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="client-account-and-profile">
+<h1>Client account and profile<a class="headerlink" href="#client-account-and-profile" title="Permalink to this headline"></a></h1>
+<div class="section" id="basic-principles">
+<h2>Basic principles<a class="headerlink" href="#basic-principles" title="Permalink to this headline"></a></h2>
+<p>Every payment request which is identified with unique parameters considered to be a separate account/profile entity within the system.
+Accounts and profile data are initially collected from payment request headers and body parameters.</p>
+<p>If account already exists in database then decision based on payment flow settings is made and a customer goes
+through pay-through flow or through wallet funding first process.</p>
+<p>Each transaction/payment processing flow is tagged/marked with designated to this flow account.</p>
+<p>Each account includes profile date (phone number, name, email, supportive documents, date of birth, etc)</p>
+</div>
+<div class="section" id="client-due-diligence">
+<h2>Client due diligence<a class="headerlink" href="#client-due-diligence" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Client requires to perform due diligence within the system once overall turn-over on its wallet exceeds pre-defined threshold</p></li>
+<li><p>By due diligence we mean verification and validation of customer personal data</p></li>
+<li><p>Client verification includes: phone number, email, name, date of birth</p></li>
+<li><p>Client validation includes: person identification (id document), proof of address, proof of funds, proof of card possession.</p></li>
+<li><p>Client validation is automatically performed using authorized 3d party service providers (Face recognition, MRZ recognition, Address validation services)</p></li>
+<li><p>Risk management team tracks validation performance using dedicated web interface and have an option manually chang validation statuses for specific customers.</p></li>
+<li><p>Client due diligence is applied to individuals, business representative and commercial entities</p></li>
+</ul>
+</div>
+<div class="section" id="account-types">
+<h2>Account types<a class="headerlink" href="#account-types" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Pale account</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Pale account type is assigned to an account in case of pay-through payment mode enabled,
+where no information for comprehensive verification process is collected</p></li>
+<li><p>Client due diligence procedure is not applicable to this type of accounts</p></li>
+<li><p>Pale account profile information depends on payment method choice</p></li>
+</ol>
+<blockquote>
+<div><p>(ex. if classic credit/debit card is chosen then cardholder name will be collected and assigned to the profile name field)</p>
+</div></blockquote>
+<ol class="loweralpha simple" start="4">
+<li><p>Pale account type could be converted to any account type by collecting additional info from the client</p></li>
+<li><p>Pale account type describes an account as the weakest related to risk and fraud protection of its type</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Personal account</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Personal account type requires phone number, email and client name verification to be accomplished</p></li>
+<li><p>Client due diligence procedure is applicable and presented by simplified process of phone number validation with a text code</p></li>
+<li><p>Personal accounts considered to be verified and partially validated</p></li>
+<li><p>Personal account type has a pre-defined lifetime turn-over limit, breaching which triggering Green account upgrade process</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Green account</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Green account is a personal account which has been fully verified and validated</p></li>
+<li><p>Green account type has a pre-defined lifetime turn-over limit</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Business account</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Assigned to a commercial clients, traders, merchants</p></li>
+<li><p>Enhanced due diligence process including beneficiary identification and legitimacy of operations
+is performed on each account of this type</p></li>
+<li><p>Business accounts have access to API endpoints to process payments</p></li>
+<li><p>Business accounts are the subject of merchant fraud prevention system and shall be framed with number of limits
+(transaction amount, average ticket size, allowed countries, etc)</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="business.html" class="btn btn-neutral float-left" title="Public API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fraud.html" class="btn btn-neutral float-right" title="Fraud detection and prevention" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

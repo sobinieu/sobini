@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operations &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Web apps" href="apps.html" />
+    <link rel="prev" title="System overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-business-account">Creating a business account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adjusting-commission">Adjusting commission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-disputes">Handling disputes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-going-payment-monitoring">On-going payment monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Operations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="operations">
+<h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline"></a></h1>
+<p>To perform system admin and management functions the following UI web applications are provided:</p>
+<ol class="arabic">
+<li><p>Analytics, transaction history, system performance, wallet monitoring, etc</p>
+<blockquote>
+<div><p><a class="reference external" href="https://metabase.sobini.eu/">Sobini analytics</a></p>
+</div></blockquote>
+</li>
+<li><p>System settings</p></li>
+</ol>
+<ul>
+<li><p>Setting up business account parameters such as: 3d party gateway connection params</p></li>
+<li><p>Currency conversion rules</p></li>
+<li><p>Payment routing strings</p>
+<blockquote>
+<div><p><a class="reference external" href="https://settings.sobini.eu/settings/admin">Settings console</a></p>
+</div></blockquote>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Management console</p></li>
+</ol>
+<ul>
+<li><p>Managing customer KYC process</p></li>
+<li><p>Adding new business accounts</p></li>
+<li><p>Oversee business account financial performance</p></li>
+<li><p>Business account settlements</p></li>
+<li><p>Dispute management</p>
+<blockquote>
+<div><p><a class="reference external" href="https://core.sobini.eu/manage">Management console</a></p>
+</div></blockquote>
+</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Admin console (only for advanced users)</p></li>
+</ol>
+<ul>
+<li><p>Adding new system administrators</p></li>
+<li><p>Setting up commission values to an account</p></li>
+<li><p>Modifying customer profile data</p></li>
+<li><p>Adding/Modifying various system data entities (country, currency lists)</p>
+<blockquote>
+<div><p><a class="reference external" href="https://core.sobini.eu/admin">Admin console</a></p>
+</div></blockquote>
+</li>
+</ul>
+<ol class="arabic" start="5">
+<li><p>Business account backoffice</p>
+<blockquote>
+<div><p><a class="reference external" href="https://core.sobini.eu/office">Backoffice console</a></p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic" start="5">
+<li><p>Demo-shop demonstrating a simple business account integration</p>
+<blockquote>
+<div><p><a class="reference external" href="https://demo.sobini.eu/demo">Demo-shop for checkout demonstration</a></p>
+</div></blockquote>
+</li>
+</ol>
+<div class="section" id="creating-a-business-account">
+<h2>Creating a business account<a class="headerlink" href="#creating-a-business-account" title="Permalink to this headline"></a></h2>
+<p>Login to manage interface following the link:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://core.sobini.eu/manage">Management console</a></p>
+</div></blockquote>
+<img alt="../_images/manage_login.PNG" src="../_images/manage_login.PNG" />
+<p>Navigate to Merchants menu on the left</p>
+<img alt="../_images/manage_merchants.PNG" src="../_images/manage_merchants.PNG" />
+<p>Tap add merchant button and fill the form below:</p>
+<img alt="../_images/manage_merchants_add.PNG" src="../_images/manage_merchants_add.PNG" />
+<ul class="simple">
+<li><p>Email should be a unique one withing the system database (can’t create 2 merchants with same email)</p></li>
+<li><p>Phone number should be in the following format: +8612345678 (+[code][number])</p></li>
+<li><p>Settlement info could be filled later, and also accessible on merchant backoffice page</p></li>
+<li><p>We recommend to generate a strong password for an account using strong password gen for example</p></li>
+</ul>
+<p>Find merchant in the list and tap edit icon on the right row menu</p>
+<ul class="simple">
+<li><p>please note that the info like private key and merchant token is a private one, and should be sent directly to a merchant by an account manager, this information should not be disclosed to any 3d parties *</p></li>
+</ul>
+<img alt="../_images/manage_merchants_view.PNG" src="../_images/manage_merchants_view.PNG" />
+</div>
+<div class="section" id="adjusting-commission">
+<h2>Adjusting commission<a class="headerlink" href="#adjusting-commission" title="Permalink to this headline"></a></h2>
+<p>You can adjust commission schedule for any payment type using flexy-commission service.</p>
+<p>This service works using flexy-guard rule filtering engine where instead of setting up the rules, you post commissions using
+the following JSON format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;header&quot;: {
+        &quot;type&quot;: &quot;PayinRequest&quot;
+    },
+    &quot;body&quot;: {
+        &quot;self&quot;: {
+            &quot;rate&quot;: &quot;0.5&quot;,
+            &quot;fee&quot;: &quot;1&quot;
+        },
+        &quot;provider&quot;: {
+            &quot;rate&quot;: &quot;0.4&quot;,
+            &quot;fee&quot;: &quot;0.3&quot;
+        }
+    }
+}
+</pre></div>
+</div>
+<p>Where header section identifies payment request params to fetch commission schedule for and body contains of “self” (commission charged by the system) and “provider” (commission charged by payment provider) sections
+These sections contain commission schedule defined by the following keywords:</p>
+<p><strong>rate</strong> - rate is % based commission fee (like: 0.5%, 0.6%)</p>
+<p><strong>fee</strong> - stand fee is fixed price commission fee (like: 0.1 USD, 0.4 USD)</p>
+<p>Please note that no currency or percentage symbol should be posted along with a float number</p>
+<p>To perform initial service setup please follow the steps:</p>
+<ol class="arabic simple">
+<li><p>Post definition section (defines payment parameters to fetch commission sch. for)</p></li>
+</ol>
+<img alt="../_images/fl_d.png" src="../_images/fl_d.png" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[
+{
+    &quot;param&quot;: {
+    &quot;name&quot;: &quot;to_profile&quot;,
+    &quot;param&quot;: {
+        &quot;name&quot;: &quot;source&quot;,
+        &quot;param&quot;: {
+        &quot;name&quot;: &quot;type&quot;
+        }
+    }
+    }
+},
+{
+    &quot;param&quot;: {
+    &quot;name&quot;: &quot;type&quot;
+    }
+},
+{
+    &quot;param&quot;: {
+    &quot;name&quot;: &quot;to_profile&quot;,
+    &quot;param&quot;: {
+        &quot;name&quot;: &quot;source&quot;,
+        &quot;param&quot;: {
+        &quot;name&quot;: &quot;type&quot;,
+        &quot;param&quot;: {
+            &quot;name&quot;: &quot;country_bank&quot;
+        }
+        }
+    }
+    }
+}
+]
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Post basic commission schedule</p></li>
+</ol>
+<img alt="../_images/fl_c.png" src="../_images/fl_c.png" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+&quot;header&quot;: {
+    &quot;type&quot;: &quot;PayinRequest&quot;
+},
+&quot;body&quot;: {
+    &quot;self&quot;: {
+    &quot;rate&quot;: &quot;0.5&quot;,
+    &quot;fee&quot;: &quot;1&quot;
+    },
+    &quot;provider&quot;: {
+    &quot;rate&quot;: &quot;0.4&quot;,
+    &quot;fee&quot;: &quot;0.3&quot;
+    }
+}
+}
+</pre></div>
+</div>
+<p>More commission schedule examples are below:</p>
+<ul class="simple">
+<li><p>commission schedule depends on profile, payment source (channel, type, country of issuer institution)</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+&quot;header&quot;: {
+    &quot;to_profile&quot;: &quot;3&quot;,
+    &quot;source&quot;: &quot;default&quot;,
+    &quot;type&quot;: &quot;PayinRequest&quot;,
+    &quot;country_bank&quot;: &quot;RU&quot;
+},
+&quot;body&quot;: {
+    &quot;self&quot;: {
+    &quot;rate&quot;: &quot;2.2&quot;,
+    &quot;fee&quot;: &quot;10&quot;
+    },
+    &quot;provider&quot;: {
+    &quot;rate&quot;: &quot;1.1&quot;,
+    &quot;fee&quot;: &quot;5&quot;
+    }
+}
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>commission schedule depends on profile, payment source (channel, type)</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+&quot;header&quot;: {
+    &quot;to_profile&quot;: &quot;3&quot;,
+    &quot;source&quot;: &quot;default&quot;,
+    &quot;type&quot;: &quot;PayinRequest&quot;
+},
+&quot;body&quot;: {
+    &quot;self&quot;: {
+    &quot;rate&quot;: &quot;2.2&quot;,
+    &quot;fee&quot;: &quot;10&quot;
+    },
+    &quot;provider&quot;: {
+    &quot;rate&quot;: &quot;1.1&quot;,
+    &quot;fee&quot;: &quot;5&quot;
+    }
+}
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="handling-disputes">
+<h2>Handling disputes<a class="headerlink" href="#handling-disputes" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="on-going-payment-monitoring">
+<h2>On-going payment monitoring<a class="headerlink" href="#on-going-payment-monitoring" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="System overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apps.html" class="btn btn-neutral float-right" title="Web apps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

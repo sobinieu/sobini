@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud detection and prevention &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Continuation and backup" href="continuation.html" />
+    <link rel="prev" title="Client account and profile" href="accounts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fraud detection and prevention</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fraud-basic-setup-and-specification">Fraud basic setup and specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-and-filter-alerts">Monitoring and filter alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-traffic-filtering-rules-syntax">Basic traffic filtering rules syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aggregating-parameter-values">Aggregating parameter values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flexyguard-admin-console-web-ui">FlexyGuard admin console (WEB UI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flexyguard-keywords-count-not-in-not-in-country-not-in-ip-country-value">FlexyGuard keywords (count, not_in, not_in_country, not_in_ip_country, value)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uploading-the-lists-for-ip-countries-and-bin-countries-parameters">Uploading the lists for IP countries and BIN countries parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#searching-modifying-the-rules">Searching/Modifying the rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rule-naming-and-hashing">Rule naming and hashing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Fraud detection and prevention</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/fraud.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="fraud-detection-and-prevention">
+<h1>Fraud detection and prevention<a class="headerlink" href="#fraud-detection-and-prevention" title="Permalink to this headline"></a></h1>
+<div class="section" id="fraud-basic-setup-and-specification">
+<h2>Fraud basic setup and specification<a class="headerlink" href="#fraud-basic-setup-and-specification" title="Permalink to this headline"></a></h2>
+<p>Fraud prevention and traffic filtering service (FlexyGuard) is a dedicated web-service which pre-processes all payment requests.
+The Guard system analyses payment request snapshot and applies set of filters to return a scoring remark back to Public API.</p>
+<p>Every payment request is re-routed to FlexyGuard in the first place</p>
+</div>
+<div class="section" id="monitoring-and-filter-alerts">
+<h2>Monitoring and filter alerts<a class="headerlink" href="#monitoring-and-filter-alerts" title="Permalink to this headline"></a></h2>
+<p>The Guard system assigns a check result and a score to every payment request and sends the result back to the caller.
+Filtered payment requests could be monitored via Analytics/Reporting interface on a dedicated dashboard.</p>
+<p>Appropriate alerting mechanism could be set for scoring aggregated number or payment decline reason or any day-to-day fraud monitoring process requirements
+in Analytics/Reporting system</p>
+</div>
+<div class="section" id="basic-traffic-filtering-rules-syntax">
+<h2>Basic traffic filtering rules syntax<a class="headerlink" href="#basic-traffic-filtering-rules-syntax" title="Permalink to this headline"></a></h2>
+<p>Any filtering rule contains of two parts: a header and a body, where the header contains keys and values from payment request which
+trigger the rule once all the key/value pairs match the ones from the payment request.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;header&quot; : {
+    &quot;mid&quot;: &quot;some_merchant_id&quot;,
+    &quot;currency&quot;: &quot;USD&quot;
+ },
+&quot;body&quot;: {
+    &quot;amount&quot;: {
+        &quot;value&quot;:[1000, 10000]
+    }
+}
+
+ //The code above indicates that every time we have payment
+ //with mid and currency set to &quot;some_merchant_id&quot; and &quot;USD&quot; accordingly
+ //the following rule body will be applied:
+ //check if amount parameter value of payment request is between 1 and 100 USD
+</pre></div>
+</div>
+<p>Default payment parameters are (could be modified in definitions section of FelxyGuard admin console):</p>
+<p><strong>data</strong> - additional data that could be sent in “extra_return_param” field on public API</p>
+<p><strong>amount</strong> - tx amount in cents (100 cents = 1 USD)</p>
+<p><strong>gateway_amount</strong> - amount in cents accepted by the acquirer (usually converted from tx amount, 100 cents = 1 USD)</p>
+<p><strong>userid</strong> - lead_id field from Payments object (table)</p>
+<p><strong>email</strong> - payer’s email provided on the payment form or via Public API</p>
+<p><strong>tid</strong> - payment unique token assigned by the system</p>
+<p><strong>acq_id</strong> - type of gateway which has been used to facilitate this payment</p>
+<p><strong>status</strong> - payment status (Pending, Approved, Declined)</p>
+<p><strong>ip</strong> - referral IP address</p>
+<p><strong>currency</strong> - currency code (USD, EUR, PLN, CNY, etc)</p>
+<p><strong>gateway_currency</strong> - currency code accepted by the acquirer (USD, EUR, PLN, CNY, etc)</p>
+<p><strong>card</strong> - PAN token attribute of Payment object (table)</p>
+<p><strong>bin</strong> - BIN number  attribute of Payment object (Bank identification number, first 6 digits of PAN)</p>
+<p><strong>order</strong> - an order number assigned by a merchant</p>
+<p><strong>type</strong> - Payment type (PayIn, Payout)</p>
+<p><strong>product</strong> - product description assigned by a merchant</p>
+<p><strong>company_id</strong> - merchant company name</p>
+<p><strong>mcc</strong> - merchant category code, assigned to a merchant account by the settings services</p>
+</div>
+<div class="section" id="aggregating-parameter-values">
+<h2>Aggregating parameter values<a class="headerlink" href="#aggregating-parameter-values" title="Permalink to this headline"></a></h2>
+<p>To implement filtering by a parameter aggregated value (periodic-wise) we have to define which parameters
+should be aggregated along with its dependencies from the other parameters</p>
+<p><em>Example: we need to filter payments according to the accumulated 7 days turnover from a single card</em></p>
+<p>To do so we need to add definition to FlexyCard and instruct it to start accumulating “amount” parameter values
+from a unique “card” parameter value and drop this value every 7 days for each card parameter value.</p>
+<p>Also we want to do so for each unique mid, acq_id and currency parameters,
+in this case definition must be as following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[
+    {
+        //defining a new parameter to perform aggregation, &quot;mid&quot; wil be the first unique parameter
+        &quot;param&quot;: {
+            &quot;name&quot;: &quot;mid&quot;,
+            //defining next unique nested parameter &quot;acq_id&quot;
+            &quot;param&quot;: {
+                &quot;name&quot;: &quot;acq_id&quot;,
+                //another nested unique parameter &quot;currency&quot;
+                &quot;param&quot;: {
+                    &quot;name&quot; : &quot;currency&quot;,
+                    //defining card unique nested param
+                    &quot;param&quot;: {
+                        &quot;name&quot;: &quot;card&quot;,
+                        //aggregating amount and setting drop value period to 7 days
+                        &quot;param&quot;: {
+                            &quot;name&quot;: amount,
+                            &quot;aggr&quot;: {
+                                &quot;type&quot;: &quot;sum&quot;,
+                                &quot;duration&quot;: [7]
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+]
+</pre></div>
+</div>
+<p>The following definitions for aggregates are already predefined in the system and could be changed on
+FlexyGaurd admin console:</p>
+<p>“mid&gt;acq_id&gt;email&gt;count 1, 7, 30 days” - counts payment within mid, acq_id and single email
+“mid&gt;ip&gt;count 1, 7, 30 days” - counts payment from a single ip address within unique mid parameter</p>
+<p>etc</p>
+<p>‘Full list of definitions could be checked on FlexyGuard admin console Definitions&gt;Aggr section from the left menu,
+please note that definition are rarely to be modified only in the case of changing the rule
+(adding new param to the payment entity) schema or aggregation logic’</p>
+<img alt="../_images/flexyguard_def.png" src="../_images/flexyguard_def.png" />
+</div>
+<div class="section" id="flexyguard-admin-console-web-ui">
+<h2>FlexyGuard admin console (WEB UI)<a class="headerlink" href="#flexyguard-admin-console-web-ui" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Adding a new rule</p></li>
+</ol>
+<p>To add a new rule please navigate to Add Rule page bu clicking FlexyGuard log at the upper left corner</p>
+<img alt="../_images/flexyguard_addrule.PNG" src="../_images/flexyguard_addrule.PNG" />
+</div>
+<div class="section" id="flexyguard-keywords-count-not-in-not-in-country-not-in-ip-country-value">
+<h2>FlexyGuard keywords (count, not_in, not_in_country, not_in_ip_country, value)<a class="headerlink" href="#flexyguard-keywords-count-not-in-not-in-country-not-in-ip-country-value" title="Permalink to this headline"></a></h2>
+<p><strong>count</strong> - sets a range in which param presence in the payment request count must be checked</p>
+<img alt="../_images/flexyguard_count.png" src="../_images/flexyguard_count.png" />
+<p><em>sets the range for payment count withing one card parameter within 1 and 7 days</em></p>
+<p><strong>not_in/in</strong> - checks that parameter value is not in or in the list</p>
+<img alt="../_images/flexyguard_not_in.png" src="../_images/flexyguard_not_in.png" />
+<p><em>sets a list of card parameter and checks if card value not in the list</em></p>
+<p><strong>not_in_country</strong> - checks if specific parameter value not in the country list associated with this parameter</p>
+<p><strong>in_country</strong> - checks if specific parameter value is in the country list associated with this parameter</p>
+<img alt="../_images/flexyguard_not_in_country.png" src="../_images/flexyguard_not_in_country.png" />
+<p><em>checks if bin parameter value is not in the list</em></p>
+<p><strong>value</strong> - checks if parameter value is withing the range</p>
+<img alt="../_images/flexyguard_value.png" src="../_images/flexyguard_value.png" />
+</div>
+<div class="section" id="uploading-the-lists-for-ip-countries-and-bin-countries-parameters">
+<h2>Uploading the lists for IP countries and BIN countries parameters<a class="headerlink" href="#uploading-the-lists-for-ip-countries-and-bin-countries-parameters" title="Permalink to this headline"></a></h2>
+<img alt="../_images/flexyguard_lists.PNG" src="../_images/flexyguard_lists.PNG" />
+<p>To update the parameter (bin, ip) country lists please navigate to the page above</p>
+<p><strong>Uploaded files should be a formatted CSV with headers at the first row</strong></p>
+<p>BIN countries file format example:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bin;ps;bank_name;type;sub_type;country;ccode_short;ccode_iso;code;www
+021502;PRIVATE LABEL;;DEBIT;;UNITED STATES;US;USA;840;;
+</pre></div>
+</div>
+</div></blockquote>
+<p>IP address country file example:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IP1;IP2;IP1_int;IP2_int;code_short;code_iso;code_number;country_name
+1.0.0.0;1.0.0.255;16777216;16777471;AU;AUS;036;AUSTRALIA
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="searching-modifying-the-rules">
+<h2>Searching/Modifying the rules<a class="headerlink" href="#searching-modifying-the-rules" title="Permalink to this headline"></a></h2>
+<p>To search the rule please enter any text on the Search text box</p>
+<img alt="../_images/flexyguard_search.PNG" src="../_images/flexyguard_search.PNG" />
+<p>To modify the rule just follow the link under rule hash value</p>
+</div>
+<div class="section" id="rule-naming-and-hashing">
+<h2>Rule naming and hashing<a class="headerlink" href="#rule-naming-and-hashing" title="Permalink to this headline"></a></h2>
+<p>When you save a rule the system automatically creates a hash value and descriptor based on header parameters</p>
+<img alt="../_images/flexyguard_hash.png" src="../_images/flexyguard_hash.png" />
+<p>Please add comment which will be added to the search index along with hash and descriptor,
+please mind that proper naming in the comment field will help to easily navigate the rule lists in the future,
+for example</p>
+<p><em>Bank Of China</em></p>
+<p><em>Bank Of China: High risk</em></p>
+<p><em>Bank Of China: High risk: China Airlines</em></p>
+<p>The first rule has only acq_id parameter at the header and defines the global rule for this bank_name
+The second one is for high risk merchant categories, like mcc parameter and acq_id posted on the header
+The last one for a specific merchant and has acq_id, mcc, mid parameters in the header</p>
+<p>‘The headers are unique within the systems, you can’t create two rules with the same header value’</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="accounts.html" class="btn btn-neutral float-left" title="Client account and profile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="continuation.html" class="btn btn-neutral float-right" title="Continuation and backup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

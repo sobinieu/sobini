@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Public API &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Client account and profile" href="accounts.html" />
+    <link rel="prev" title="Core service" href="core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Public API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-use-cases">API use cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#payment-request-flow">Payment request flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-encryption">Request encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#payment-request-snapshot">Payment request snapshot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Public API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/business.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="public-api">
+<h1>Public API<a class="headerlink" href="#public-api" title="Permalink to this headline"></a></h1>
+<p>Sobini public API is designed for interaction between business account and the system.
+It allows business account to start accepting payments for its services through various payment methods and in different apps and interfaces.</p>
+<div class="section" id="api-use-cases">
+<h2>API use cases<a class="headerlink" href="#api-use-cases" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Checkout iframe on merchant’s web-site</p></li>
+<li><p>Direct payment via merchant’s apps</p></li>
+<li><p>Wallet payments via merchant’s apps</p></li>
+<li><p>System events async notification</p></li>
+<li><p>Reading payment history on business account</p></li>
+<li><p>Reverse and refund operations</p></li>
+</ul>
+</div>
+<div class="section" id="payment-request-flow">
+<h2>Payment request flow<a class="headerlink" href="#payment-request-flow" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Simple checkout/pay-through</p></li>
+</ol>
+<ul class="simple">
+<li><p>A merchant (business account) hits API payment endpoint to create charge request (invoice) for a customer</p></li>
+<li><p>API response contains payment information along with checkout URL</p></li>
+<li><p>A merchant sends customer to checkout URL</p></li>
+<li><p>A customer completes payment with his wallet or with the card</p></li>
+<li><p>A merchant receives notification with payment status and makes the delivery</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Direct payment flow</p></li>
+</ol>
+<ul class="simple">
+<li><p>A merchant sends payment details, such as: card number, wallet authorization info to payment API</p></li>
+<li><p>The system processes payment according to the merchant’s settings</p></li>
+<li><p>A merchant receives notification with payment status and makes the delivery</p></li>
+</ul>
+</div>
+<div class="section" id="request-encryption">
+<h2>Request encryption<a class="headerlink" href="#request-encryption" title="Permalink to this headline"></a></h2>
+<p>There is an option to encrypt all requests to the API with public/private key based on SHA-512 hash and PKCS standards</p>
+<p>This option is strongly recommended to secure your payment execution via API as well as to validate the request origin
+and persist this validation throughout request/response interaction chain</p>
+<p>If encryption is disabled, then IP filtering is applied.</p>
+<p>All communication process between merchant and API is wrapped with SSL/TSL protocol, no unsecured notification URLs are allowed within the system</p>
+</div>
+<div class="section" id="payment-request-snapshot">
+<h2>Payment request snapshot<a class="headerlink" href="#payment-request-snapshot" title="Permalink to this headline"></a></h2>
+<p>Every API request within the system is logged, system has a complete snapshot for every request including request headers and body.
+System use this information for further potential fraud pattern analysis and client claim investigation.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="core.html" class="btn btn-neutral float-left" title="Core service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="accounts.html" class="btn btn-neutral float-right" title="Client account and profile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

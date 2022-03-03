@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Sobini specification! &mdash; Sobini 1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Sobini
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Sobini</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to Sobini specification!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="welcome-to-sobini-specification">
+<h1>Welcome to Sobini specification!<a class="headerlink" href="#welcome-to-sobini-specification" title="Permalink to this headline"></a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">System overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#abstract">Abstract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#basic-components">Basic components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#ui-and-applications">UI and applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#architecture-and-design">Architecture and design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#security-and-encryption">Security and encryption</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#creating-a-business-account">Creating a business account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#adjusting-commission">Adjusting commission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#handling-disputes">Handling disputes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#on-going-payment-monitoring">On-going payment monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Web apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apps.html#business-account-app">Business account app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.html#business-account-backend">Business account backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.html#management-financial-console">Management/Financial console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.html#account-settings-and-fraud-filter-management-console">Account settings and fraud filter management console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.html#analytics-and-reporting-system">Analytics and reporting system</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core.html#entries-or-ledger-record">Entries or ledger record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#transaction-entry-flow">Transaction entry flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#entry-types">Entry types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core.html#immutability">Immutability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="business.html">Public API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="business.html#api-use-cases">API use cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="business.html#payment-request-flow">Payment request flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="business.html#request-encryption">Request encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="business.html#payment-request-snapshot">Payment request snapshot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Client account and profile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#basic-principles">Basic principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#client-due-diligence">Client due diligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#account-types">Account types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fraud.html">Fraud detection and prevention</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#fraud-basic-setup-and-specification">Fraud basic setup and specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#monitoring-and-filter-alerts">Monitoring and filter alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#basic-traffic-filtering-rules-syntax">Basic traffic filtering rules syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#aggregating-parameter-values">Aggregating parameter values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#flexyguard-admin-console-web-ui">FlexyGuard admin console (WEB UI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#flexyguard-keywords-count-not-in-not-in-country-not-in-ip-country-value">FlexyGuard keywords (count, not_in, not_in_country, not_in_ip_country, value)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#uploading-the-lists-for-ip-countries-and-bin-countries-parameters">Uploading the lists for IP countries and BIN countries parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#searching-modifying-the-rules">Searching/Modifying the rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fraud.html#rule-naming-and-hashing">Rule naming and hashing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Notification API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html#notification-data">Notification data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html#types-of-notifications">Types of notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html#notification-request-encryption">Notification request encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html#failed-re-scheduling">Failed re-scheduling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="continuation.html">Continuation and backup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="continuation.html#database-failover">Database failover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuation.html#personal-and-sensitive-data-backups">Personal and sensitive data backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuation.html#continuous-integration-and-service-sustainability">Continuous integration and service sustainability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuation.html#blue-green-deployment-strategy">Blue/Green deployment strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Customer digital wallets and bank accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#sign-up-customer-on-boarding">Sign-up (Customer on-boarding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#sing-up-business-on-boarding">Sing-up (Business on-boarding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#sing-in-2fa">Sing-in (2FA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#customer-due-dilligence-kyc">Customer due dilligence (KYC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#opening-bank-account">Opening bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#opening-digital-asset-account">Opening digital asset account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#customer-profile">Customer profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#transferring-money-to-the-account-top-up">Transferring money to the account (Top-Up)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#transferring-digital-asset-to-the-account">Transferring digital asset to the account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#withdrawing-funds-from-the-account-withdrawal">Withdrawing funds from the account (Withdrawal)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#withdrawing-digital-asset-to-the-account">Withdrawing digital asset to the account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#internal-transfers">Internal transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#digital-assets-exchange-operations">Digital assets exchange operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html#managing-customer-digital-wallets-and-bank-accounts">Managing customer digital wallets and bank accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#manually-creating-a-business-account">Manually creating a business account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#bank-and-digital-account-management">Bank and digital account management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#kyc-management-workflow-and-approval">KYC management workflow and approval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#managing-customers-profiles">Managing customer’s profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#manual-money-transfers">Manual money transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#setting-commission-and-fee">Setting commission and fee</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet.html#reporting-and-bi-system-account-balances-entries-turn-over-etc">Reporting and BI system (Account balances, Entries, Turn-over, etc)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pci_dss.html">PCI DSS brief info</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#list-of-system-components">List of system components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#sensitive-data-flow-description">Sensitive data flow description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#sensitive-data-objects">Sensitive data objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#processing-sensitive-data-components">Processing sensitive data components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#infrastructure-specification">Infrastructure specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#the-map-of-network-relations-in-our-infrastructure">The map of network relations in our infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pci_dss.html#the-description-of-deployment-new-environment-of-sobini-product">The description of deployment new environment of Sobini product</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="../genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="../py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="../search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vlad.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
